@@ -1,0 +1,51 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "semi": ["error", "always"],
+    "object-curly-spacing": ["error", "never"],
+    "comma-dangle": ["error", "always"],
+    "max-len": [
+      "warn", {
+        "code": 120,
+        "tabWidth": 2,
+        "ignoreComments": true,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "indent": [2,2, {"SwitchCase": 1}],
+    "no-console": 1,
+    "no-unused-expressions": ["error", {
+      "allowShortCircuit": false,
+      "allowTernary": false,
+      "allowTaggedTemplates": true
+    }],
+    "no-unused-vars": ["error", {"args": "after-used"}],
+    "quotes": ["error", "single"],
+    "multiline-ternary": ["error", "always-multiline"],
+    "arrow-parens": ["error", "always"],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "newlines-between": "always"
+      }
+    ],
+    "import/no-unresolved": "error",
+    "import/no-named-as-default": 0,
+    "import/prefer-default-export": 0
+  }
+}

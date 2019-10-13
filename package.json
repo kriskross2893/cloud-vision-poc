@@ -3,8 +3,16 @@
   "version": "1.0.0",
   "description": "A nodejs application that uses google cloud vision to process images and retrieve useful text information",
   "main": "app.js",
+  "engines": {
+    "node": "10.16.3"
+  },
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "dev": "./node_modules/.bin/nodemon --exec ./node_modules/.bin/babel-node src/app.js",
+    "build": "./node_modules/.bin/babel src -d dist -s --presets es2015",
+    "serve": "node dist/app.js",
+    "deploy": "npm run bulid && npm run serve",
+    "lint": "./node_modules/.bin/eslint src --ext js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +28,39 @@
   "bugs": {
     "url": "https://github.com/kriskross2893/cloud-vision-poc/issues"
   },
-  "homepage": "https://github.com/kriskross2893/cloud-vision-poc#readme"
+  "homepage": "https://github.com/kriskross2893/cloud-vision-poc#readme",
+  "dependencies": {
+    "async": "^3.1.0",
+    "body-parser": "^1.19.0",
+    "debug": "^4.1.1",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-interceptor": "^1.2.0",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.1",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^1.19.3",
+    "nyc": "^14.1.1",
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "nyc": {
+    "exclude": [
+      "**/*.spec.js",
+      "tests/env.js"
+    ]
+  }
 }
